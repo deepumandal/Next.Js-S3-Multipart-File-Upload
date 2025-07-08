@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "rootDir": ".",
+    "paths": {
+      "@Public/*": ["./public/*"],
+      "@App/*": ["./src/app/*"],
+      "@GlobalCss": ["./src/globals.css"],
+      "@Fonts/*": ["./src/assets/fonts/*"],
+      "@Styles/*": ["./src/assets/styles/*"],
+      "@Svg/*": ["./src/assets/svg/*"],
+      "@Static/*": ["./src/static/*"],
+      "@Hooks/*": ["./src/components/hooks/*"],
+      "@Shared/*": ["./src/components/shared/*"],
+      "@UI/*": ["./src/components/ui/*"],
+      "@Config/*": ["./src/components/config/*"],
+      "@HOC/*": ["./src/components/HOC/*"],
+      "@Utils/*": ["./src/utils/*"],
+      "@AppTypes/*": ["./src/@types/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

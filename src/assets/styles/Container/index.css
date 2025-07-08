@@ -1,0 +1,7 @@
+.base-container {
+  @apply mx-auto;
+}
+
+.full-height {
+  @apply h-full min-h-screen;
+}

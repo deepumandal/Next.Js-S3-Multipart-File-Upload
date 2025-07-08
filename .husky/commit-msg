@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo ""
+echo ""
+echo "📝 Validating commit message..."
+
+pnpm exec commitlint --edit "$1"
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "🚫 Invalid commit message!"
+  echo "💡 Use the Conventional Commit format:"
+  echo ""
+  echo "  ✨ feat:        A new feature"
+  echo "  🐛 fix:         A bug fix"
+  echo "  📝 docs:        Documentation only changes"
+  echo "  💄 style:       Code style (formatting only)"
+  echo "  🔧 chore:       Build tasks, tooling setup"
+  echo "  🔁 refactor:    Code change not fixing a bug or adding feature"
+  echo ""
+  echo "🔁 Examples:"
+  echo "  feat: add Docker setup for Next.js"
+  echo "  fix(auth): resolve login redirect loop"
+  echo "  chore: setup commitlint and husky"
+  echo ""
+  echo "📘 More info: https://www.conventionalcommits.org/en/v1.0.0/"
+  exit 1
+else
+  echo "✅ Commit message looks great!"
+fi

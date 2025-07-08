@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "./assets/styles/index.css";
+@config "../tailwind.config.ts";
+
+/* Base Theme Variables */
+@layer base {
+  :root {
+    /* Light theme colors */
+    --background-light: 204, 93.8%, 93.7%;
+    --heading-light: 220.9, 39.3%, 11%;
+    --text-light: 220.9, 39.3%, 11%;
+    --accent-light: 0, 62.8%, 30.6%;
+    --muted-light: 215.3, 19.3%, 34.5%;
+    --primary-light: 213.1, 93.9%, 67.8%;
+    --secondary-light: 220, 14.3%, 95.9%;
+    --destructive-light: 0, 84.2%, 60.2%;
+    --input-light: 216, 12.2%, 83.9%;
+    --model-overlay-light: 0, 0%, 0%;
+    --border-light: 240, 5.9%, 90%;
+    --card-light: 210, 40%, 98%;
+    --tooltip-light: 220, 14%, 95%;
+
+    --background-dark: 220, 20%, 10%;
+    --heading-dark: 220, 15%, 85%;
+    --text-dark: 220, 15%, 85%;
+    --accent-dark: 0, 60%, 50%;
+    --muted-dark: 215, 15%, 40%;
+    --primary-dark: 213, 93%, 60%;
+    --secondary-dark: 220, 10%, 20%;
+    --destructive-dark: 0, 70%, 50%;
+    --input-dark: 220, 10%, 25%;
+    --model-overlay-dark: 0, 0%, 0%;
+    --border-dark: 220, 10%, 25%;
+    --card-dark: 220, 15%, 15%;
+    --tooltip-dark: 220, 15%, 15%;
+
+    /* Default to light theme values */
+    --background: var(--background-light);
+    --heading: var(--heading-light);
+    --text: var(--text-light);
+    --accent: var(--accent-light);
+    --muted: var(--muted-light);
+    --primary: var(--primary-light);
+    --secondary: var(--secondary-light);
+    --destructive: var(--destructive-light);
+    --input: var(--input-light);
+    --model-overlay: var(--model-overlay-light);
+    --border: var(--border-light);
+    --card: var(--card-light);
+    --tooltip: var(--tooltip-light);
+  }
+
+  /* Dark theme overrides */
+  .dark {
+    --background: var(--background-dark);
+    --heading: var(--heading-dark);
+    --text: var(--text-dark);
+    --accent: var(--accent-dark);
+    --muted: var(--muted-dark);
+    --primary: var(--primary-dark);
+    --secondary: var(--secondary-dark);
+    --destructive: var(--destructive-dark);
+    --input: var(--input-dark);
+    --model-overlay: var(--model-overlay-dark);
+    --border: var(--border-dark);
+    --card: var(--card-dark);
+    --tooltip: var(--tooltip-dark);
+  }
+
+  body {
+    @apply bg-background text-text;
+  }
+
+  .app-border {
+    @apply border border-border;
+  }
+}
+
+.chart-container {
+  position: relative;
+  overflow: visible; /* Prevent tooltip clipping */
+}
+
+/* Scrollbar Utilities */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar-5px::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .no-scrollbar-5px::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .no-scrollbar-5px::-webkit-scrollbar-thumb {
+    @apply bg-gray-500;
+    border-radius: 20px;
+    height: 20px;
+  }
+
+  .no-scrollbar-5px {
+    -ms-overflow-style: none;
+    scrollbar-color: #e0e7ff transparent;
+  }
+
+  .gridLines > *,
+  .gridLines {
+    @apply border border-dashed border-border;
+  }
+}

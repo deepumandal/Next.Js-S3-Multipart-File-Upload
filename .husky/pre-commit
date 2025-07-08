@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "🔍 Running pre-commit checks..."
+echo "🎯 Stage: lint-staged"
+
+pnpm lint-staged
+
+if [ $? -ne 0 ]; then
+  echo "❌ Lint-staged failed. Commit aborted."
+  exit 1
+else
+  echo "✅ Code passed lint-staged. Moving to commit-msg stage..."
+fi

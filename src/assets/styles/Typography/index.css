@@ -1,0 +1,95 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+strong {
+  all: revert;
+}
+
+.h1 {
+  @apply text-4xl font-extrabold leading-tight tracking-wide;
+}
+
+.h2 {
+  @apply text-3xl font-bold leading-snug tracking-wide;
+}
+
+.h3 {
+  @apply text-2xl font-semibold leading-normal tracking-wide;
+}
+
+.h4 {
+  @apply text-xl font-medium leading-normal tracking-wide;
+}
+
+.h5 {
+  @apply text-lg font-medium leading-snug tracking-wide;
+}
+
+.h6 {
+  @apply text-base font-medium leading-snug tracking-wide;
+}
+
+.p {
+  @apply text-base font-normal leading-normal tracking-normal;
+}
+
+.span {
+  @apply text-base font-normal leading-normal tracking-normal;
+}
+
+.strong {
+  @apply text-base font-semibold leading-normal tracking-normal;
+}
+
+.header-default-variant {
+  @apply text-heading;
+}
+
+.header-accent-variant {
+  @apply text-accent;
+}
+
+.header-destructive-variant {
+  @apply text-destructive;
+}
+
+.header-muted-variant {
+  @apply text-muted;
+}
+
+.header-primary-variant {
+  @apply text-primary;
+}
+
+.header-secondary-variant {
+  @apply text-secondary;
+}
+
+.text-default-variant {
+  @apply text-text;
+}
+
+.text-accent-variant {
+  @apply text-accent;
+}
+
+.text-destructive-variant {
+  @apply text-destructive;
+}
+
+.text-muted-variant {
+  @apply text-muted;
+}
+
+.text-primary-variant {
+  @apply text-primary;
+}
+
+.text-secondary-variant {
+  @apply text-secondary;
+}
