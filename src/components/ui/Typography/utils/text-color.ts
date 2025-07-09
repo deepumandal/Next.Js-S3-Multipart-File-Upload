@@ -8,7 +8,7 @@ export const TextColor: Record<ColorVariantsType, ClassType> = {
   muted: "text-muted",
   primary: "text-primary",
   secondary: "text-secondary",
-  background: undefined
+  background: undefined,
 };
 
 export const HeadingColor: Record<ColorVariantsType, ClassType> = {
@@ -18,5 +18,5 @@ export const HeadingColor: Record<ColorVariantsType, ClassType> = {
   muted: "text-muted",
   primary: "text-primary",
   secondary: "text-secondary",
-  background: undefined
+  background: undefined,
 };

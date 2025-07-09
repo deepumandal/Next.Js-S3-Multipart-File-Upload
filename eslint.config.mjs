@@ -21,12 +21,12 @@ export default defineConfig([
         ecmaVersion: "latest",
         sourceType: "module",
         project: "./tsconfig.json",
-        ecmaFeatures: { jsx: true }
+        ecmaFeatures: { jsx: true },
       },
       globals: {
         ...globals.browser,
-        ...globals.node
-      }
+        ...globals.node,
+      },
     },
     plugins: {
       js,
@@ -36,20 +36,20 @@ export default defineConfig([
       "jsx-a11y": pluginA11y,
       "react-hooks": pluginReactHooks,
       "@cspell": pluginCSpell,
-      prettier: prettierPlugin
+      prettier: prettierPlugin,
     },
     settings: {
       react: {
-        version: "detect"
+        version: "detect",
       },
       "import/resolver": {
         typescript: {
-          directory: "./tsconfig.json"
+          directory: "./tsconfig.json",
         },
         node: {
-          extensions: [".js", ".jsx", ".ts", ".tsx"]
-        }
-      }
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
+      },
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -64,8 +64,8 @@ export default defineConfig([
         "error",
         {
           namedComponents: "arrow-function",
-          unnamedComponents: "arrow-function"
-        }
+          unnamedComponents: "arrow-function",
+        },
       ],
       "arrow-body-style": ["error", "as-needed"],
       "no-unused-vars": "off",
@@ -76,10 +76,13 @@ export default defineConfig([
           args: "after-used",
           ignoreRestSiblings: true,
           varsIgnorePattern: "^_", // optional: allow _ignored vars
-          argsIgnorePattern: "^_" // optional: allow _ignored args
-        }
+          argsIgnorePattern: "^_", // optional: allow _ignored args
+        },
       ],
-      "react/jsx-filename-extension": ["warn", { extensions: [".jsx", ".tsx"] }],
+      "react/jsx-filename-extension": [
+        "warn",
+        { extensions: [".jsx", ".tsx"] },
+      ],
       "import/no-unresolved": "error",
       "import/no-duplicates": "error",
       "react/prop-types": "off",
@@ -95,55 +98,62 @@ export default defineConfig([
       "import/order": [
         "error",
         {
-          groups: ["builtin", "external", "internal", ["sibling", "parent"], "index", "unknown"],
+          groups: [
+            "builtin",
+            "external",
+            "internal",
+            ["sibling", "parent"],
+            "index",
+            "unknown",
+          ],
           pathGroups: [
             {
               pattern: "react|react-dom|react-router-dom",
               group: "external",
-              position: "before"
+              position: "before",
             },
             {
               pattern: "components/**",
               group: "internal",
-              position: "after"
+              position: "after",
             },
             {
               pattern: "utils/**",
               group: "internal",
-              position: "after"
+              position: "after",
             },
             {
               pattern: "const/**",
               group: "internal",
-              position: "after"
+              position: "after",
             },
             {
               pattern: "redux/**",
               group: "internal",
-              position: "after"
+              position: "after",
             },
             {
               pattern: "selectors/**",
               group: "internal",
-              position: "after"
+              position: "after",
             },
             {
               pattern: "images/**",
               group: "internal",
-              position: "after"
+              position: "after",
             },
             {
               pattern: "style/**",
               group: "internal",
-              position: "after"
-            }
+              position: "after",
+            },
           ],
           pathGroupsExcludedImportTypes: ["builtin", "external"],
           alphabetize: {
             order: "asc",
-            caseInsensitive: true
-          }
-        }
+            caseInsensitive: true,
+          },
+        },
       ],
       "prettier/prettier": [
         "error",
@@ -153,10 +163,10 @@ export default defineConfig([
           bracketSpacing: true,
           bracketSameLine: false,
           arrowParens: "always",
-          endOfLine: "auto"
-        }
-      ]
-    }
+          endOfLine: "auto",
+        },
+      ],
+    },
   },
 
   {
@@ -173,7 +183,7 @@ export default defineConfig([
       "next.config.mjs",
       "tailwind.config.js",
       "tailwind.config.ts",
-      "appSchema.ts"
-    ]
-  }
+      "appSchema.ts",
+    ],
+  },
 ]);

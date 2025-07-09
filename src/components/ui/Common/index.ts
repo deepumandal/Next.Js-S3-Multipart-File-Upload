@@ -11,5 +11,5 @@ export const color: Record<ColorVariantsType, string> = {
   muted: "bg-muted",
   primary: "bg-primary",
   // ring: "bg-ring",
-  secondary: "bg-secondary"
+  secondary: "bg-secondary",
 };

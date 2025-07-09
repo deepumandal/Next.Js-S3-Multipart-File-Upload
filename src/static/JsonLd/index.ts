@@ -14,6 +14,6 @@ export const jsonldLayoutScreen = {
     "@type": "Person",
     name: "",
     url: siteUrl,
-    sameAs: []
-  }
+    sameAs: [],
+  },
 };

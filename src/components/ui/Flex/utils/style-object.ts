@@ -7,7 +7,12 @@ type JustifyContentType =
   | "space-around"
   | "space-evenly";
 type FlexDirectionType = "row" | "row-reverse" | "column" | "column-reverse";
-type AlignItemsType = "flex-start" | "flex-end" | "center" | "baseline" | "stretch";
+type AlignItemsType =
+  | "flex-start"
+  | "flex-end"
+  | "center"
+  | "baseline"
+  | "stretch";
 
 type AlignContentType =
   | "flex-start"
@@ -37,21 +42,21 @@ const justifyObj: justifyProps = {
   "flex-start": "justify-start",
   "space-around": "justify-around",
   "space-between": "justify-between",
-  "space-evenly": "justify-evenly"
+  "space-evenly": "justify-evenly",
 };
 
 const directionObj: directionProps = {
   row: "flex-row",
   "row-reverse": "flex-row-reverse",
   "column-reverse": "flex-col-reverse",
-  column: "flex-col"
+  column: "flex-col",
 };
 const alignItemsObj: alignItemsProps = {
   "flex-end": "items-end",
   "flex-start": "items-start",
   baseline: "items-baseline",
   center: "items-center",
-  stretch: "items-stretch"
+  stretch: "items-stretch",
 };
 
 const alignContentObj: AlignContentProps = {
@@ -60,7 +65,7 @@ const alignContentObj: AlignContentProps = {
   "space-around": "content-around",
   "space-between": "content-between",
   center: "content-center",
-  stretch: "content-stretch"
+  stretch: "content-stretch",
 };
 
 export {
@@ -72,5 +77,5 @@ export {
   type FlexElementType,
   type JustifyContentType,
   alignItemsObj,
-  directionObj
+  directionObj,
 };

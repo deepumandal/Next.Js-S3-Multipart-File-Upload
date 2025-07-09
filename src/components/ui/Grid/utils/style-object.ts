@@ -10,7 +10,7 @@ export const gridColumnsObj = {
   "9": "grid-cols-9",
   "10": "grid-cols-10",
   "11": "grid-cols-11",
-  "12": "grid-cols-12"
+  "12": "grid-cols-12",
 };
 
 export const gapObj = {
@@ -24,7 +24,7 @@ export const gapObj = {
   "8": "gap-8",
   "10": "gap-10",
   "12": "gap-12",
-  "16": "gap-16"
+  "16": "gap-16",
 };
 
 export type GridColumnsType = keyof typeof gridColumnsObj;

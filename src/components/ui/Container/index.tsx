@@ -23,7 +23,7 @@ const Container = forwardRef<AnyType, ContainerProps>(
       fullHeight,
       ...rest
     }: ContainerProps,
-    ref
+    ref,
   ): JSX.Element => {
     const Comp = asChild ? Slot : Element;
 
@@ -35,7 +35,7 @@ const Container = forwardRef<AnyType, ContainerProps>(
           ScreenType == "container" ? "container" : "w-full",
           border && "app-border",
           fullHeight ? "full-height" : "",
-          className
+          className,
         )}
         role={role}
         {...rest}
@@ -43,7 +43,7 @@ const Container = forwardRef<AnyType, ContainerProps>(
         {children}
       </Comp>
     );
-  }
+  },
 );
 
 Container.displayName = "Container";
