@@ -13,7 +13,7 @@ import {
   alignContentObj,
   alignItemsObj,
   directionObj,
-  justifyObj
+  justifyObj,
 } from "./utils/style-object";
 
 type FlexProps = CommonProps<"flex"> & {
@@ -46,7 +46,7 @@ const Flex = forwardRef<AnyType, FlexProps>(
       asChild,
       ...rest
     }: FlexProps,
-    ref
+    ref,
   ): JSX.Element => {
     const Comp = asChild ? Slot : Element;
     return (
@@ -67,14 +67,14 @@ const Flex = forwardRef<AnyType, FlexProps>(
 
           color[BackgroundColor] as ClassType,
 
-          className
+          className,
         )}
         {...rest}
       >
         {children}
       </Comp>
     );
-  }
+  },
 );
 
 Flex.displayName = "Flex";
@@ -87,5 +87,5 @@ export {
   type AriaRole,
   type FlexDirectionType,
   type FlexElementType,
-  type JustifyContentType
+  type JustifyContentType,
 };

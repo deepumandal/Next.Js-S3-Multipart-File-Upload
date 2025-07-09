@@ -3,7 +3,11 @@ import { CSSProperties, JSX } from "react";
 import { CommonProps } from "@Config/ui/asElement";
 import { ColorVariantsType } from "@Config/ui/colors-variants";
 import { cn } from "@Utils/ClassName";
-import { HeadingVariants, TextVariants, asElementObject } from "./utils/TypographyClasses";
+import {
+  HeadingVariants,
+  TextVariants,
+  asElementObject,
+} from "./utils/TypographyClasses";
 
 type variantsType = ColorVariantsType;
 
@@ -13,7 +17,8 @@ type TypographyProps = Omit<CommonProps<"Typography">, "BackgroundColor"> & {
   asChild?: boolean;
 };
 
-const isHeading = (T: string) => ["h1", "h2", "h3", "h4", "h5", "h6"].includes(T);
+const isHeading = (T: string) =>
+  ["h1", "h2", "h3", "h4", "h5", "h6"].includes(T);
 
 const Typography = ({
   children,
@@ -46,7 +51,7 @@ const Typography = ({
         isHeading(Element)
           ? HeadingVariants[variants as keyof typeof HeadingVariants]
           : TextVariants[variants as keyof typeof HeadingVariants],
-        className
+        className,
       )}
       {...rest}
     >

@@ -26,7 +26,7 @@ const Block = forwardRef<AnyType, BlockProps>(
       asChild,
       ...rest
     }: BlockProps,
-    ref
+    ref,
   ): JSX.Element => {
     const Comp = asChild ? Slot : Element;
 
@@ -44,7 +44,7 @@ const Block = forwardRef<AnyType, BlockProps>(
         {children}
       </Comp>
     );
-  }
+  },
 );
 
 Block.displayName = "Block";

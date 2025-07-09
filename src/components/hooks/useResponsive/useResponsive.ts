@@ -15,7 +15,7 @@ const breakpoints = {
   md: 768,
   lg: 1024,
   xl: 1280,
-  "2xl": 1536
+  "2xl": 1536,
 };
 
 /**
@@ -42,7 +42,7 @@ const useResponsive = () => {
     lg: false,
     xl: false,
     "2xl": false,
-    isMobile: false
+    isMobile: false,
   });
 
   const updateBreakpointStatus = () => {
@@ -54,7 +54,7 @@ const useResponsive = () => {
       lg: width >= breakpoints.lg,
       xl: width >= breakpoints.xl,
       "2xl": width >= breakpoints["2xl"],
-      isMobile: width < breakpoints.sm // Determine if it's a mobile screen
+      isMobile: width < breakpoints.sm, // Determine if it's a mobile screen
     });
   };
 

@@ -3,7 +3,12 @@ import { AnyType } from "@AppTypes/AnyType";
 import { CommonProps } from "@Config/ui/asElement";
 import { color } from "@UI/Common";
 import { ClassType, cn } from "@Utils/ClassName";
-import { gridColumnsObj, gapObj, GridColumnsType, GapType } from "./utils/style-object";
+import {
+  gridColumnsObj,
+  gapObj,
+  GridColumnsType,
+  GapType,
+} from "./utils/style-object";
 
 type GridProps = CommonProps<"Grid"> & {
   columns: GridColumnsType;
@@ -30,7 +35,7 @@ const Grid = forwardRef<AnyType, GridProps>(
       BackgroundColor = "default",
       ...rest
     }: GridProps,
-    ref
+    ref,
   ): JSX.Element => (
     <Element
       ref={ref}
@@ -46,13 +51,13 @@ const Grid = forwardRef<AnyType, GridProps>(
         gapObj[gap],
         border && "app-border",
         color[BackgroundColor] as ClassType,
-        className
+        className,
       )}
       {...rest}
     >
       {children}
     </Element>
-  )
+  ),
 );
 
 Grid.displayName = "Grid";

@@ -60,5 +60,5 @@ export {
   type ElementTypeMap,
   type AsElementType,
   type ElementKeysTypeUnion,
-  type AllElementTypes
+  type AllElementTypes,
 };

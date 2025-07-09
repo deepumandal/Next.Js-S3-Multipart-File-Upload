@@ -1,120 +1,83 @@
-@import "tailwindcss";
-@import "./assets/styles/index.css";
-@config "../tailwind.config.ts";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Base Theme Variables */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
 @layer base {
   :root {
-    /* Light theme colors */
-    --background-light: 204, 93.8%, 93.7%;
-    --heading-light: 220.9, 39.3%, 11%;
-    --text-light: 220.9, 39.3%, 11%;
-    --accent-light: 0, 62.8%, 30.6%;
-    --muted-light: 215.3, 19.3%, 34.5%;
-    --primary-light: 213.1, 93.9%, 67.8%;
-    --secondary-light: 220, 14.3%, 95.9%;
-    --destructive-light: 0, 84.2%, 60.2%;
-    --input-light: 216, 12.2%, 83.9%;
-    --model-overlay-light: 0, 0%, 0%;
-    --border-light: 240, 5.9%, 90%;
-    --card-light: 210, 40%, 98%;
-    --tooltip-light: 220, 14%, 95%;
-
-    --background-dark: 220, 20%, 10%;
-    --heading-dark: 220, 15%, 85%;
-    --text-dark: 220, 15%, 85%;
-    --accent-dark: 0, 60%, 50%;
-    --muted-dark: 215, 15%, 40%;
-    --primary-dark: 213, 93%, 60%;
-    --secondary-dark: 220, 10%, 20%;
-    --destructive-dark: 0, 70%, 50%;
-    --input-dark: 220, 10%, 25%;
-    --model-overlay-dark: 0, 0%, 0%;
-    --border-dark: 220, 10%, 25%;
-    --card-dark: 220, 15%, 15%;
-    --tooltip-dark: 220, 15%, 15%;
-
-    /* Default to light theme values */
-    --background: var(--background-light);
-    --heading: var(--heading-light);
-    --text: var(--text-light);
-    --accent: var(--accent-light);
-    --muted: var(--muted-light);
-    --primary: var(--primary-light);
-    --secondary: var(--secondary-light);
-    --destructive: var(--destructive-light);
-    --input: var(--input-light);
-    --model-overlay: var(--model-overlay-light);
-    --border: var(--border-light);
-    --card: var(--card-light);
-    --tooltip: var(--tooltip-light);
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
   }
-
-  /* Dark theme overrides */
   .dark {
-    --background: var(--background-dark);
-    --heading: var(--heading-dark);
-    --text: var(--text-dark);
-    --accent: var(--accent-dark);
-    --muted: var(--muted-dark);
-    --primary: var(--primary-dark);
-    --secondary: var(--secondary-dark);
-    --destructive: var(--destructive-dark);
-    --input: var(--input-dark);
-    --model-overlay: var(--model-overlay-dark);
-    --border: var(--border-dark);
-    --card: var(--card-dark);
-    --tooltip: var(--tooltip-dark);
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
+}
 
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
   body {
-    @apply bg-background text-text;
-  }
-
-  .app-border {
-    @apply border border-border;
-  }
-}
-
-.chart-container {
-  position: relative;
-  overflow: visible; /* Prevent tooltip clipping */
-}
-
-/* Scrollbar Utilities */
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .no-scrollbar-5px::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  .no-scrollbar-5px::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 20px;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-
-  .no-scrollbar-5px::-webkit-scrollbar-thumb {
-    @apply bg-gray-500;
-    border-radius: 20px;
-    height: 20px;
-  }
-
-  .no-scrollbar-5px {
-    -ms-overflow-style: none;
-    scrollbar-color: #e0e7ff transparent;
-  }
-
-  .gridLines > *,
-  .gridLines {
-    @apply border border-dashed border-border;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
