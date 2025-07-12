@@ -13,12 +13,12 @@ const nextConfig: NextConfig = {
   },
   // Enable standalone output for Docker deployments
   output: process.env.BUILD_STANDALONE === "true" ? "standalone" : undefined,
-  
+
   // Environment variables validation
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
-  
+
   // Security headers
   async headers() {
     return [
