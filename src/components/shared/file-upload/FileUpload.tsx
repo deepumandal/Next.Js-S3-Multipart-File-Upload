@@ -1,19 +1,14 @@
 "use client";
 
 import { Upload, Trash2, Play, Pause } from "lucide-react";
-import { useState, useCallback } from "react";
 import { FileUploadConfig, FileUploadItem } from "@AppTypes/upload";
+import useUpload from "@Hooks/useUpload";
 import { Badge } from "@UI/Badge";
 import { Button } from "@UI/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@UI/Card";
 import { Separator } from "@UI/Separator";
 import { cn } from "@Utils/ClassName";
-import {
-  createFilePreview,
-  formatFileSize,
-  simulateUpload,
-  validateFile,
-} from "@Utils/upload-utils";
+import { formatFileSize } from "@Utils/upload-utils";
 import { DropZone } from "./DropZone";
 import { FilePreview } from "./FilePreview";
 
@@ -24,138 +19,30 @@ interface FileUploadProps {
 }
 
 const defaultConfig: FileUploadConfig = {
-  maxSize: 10 * 1024 * 1024, // 10MB
+  maxSize: 1000 * 1024 * 1024, // 10MB
   maxFiles: 10,
   allowedTypes: ["image/", "video/", "audio/", ".pdf", ".doc", ".docx", ".txt"],
   showPreview: true,
 };
 
 export const FileUpload = ({ config = {}, className }: FileUploadProps) => {
-  const [files, setFiles] = useState<FileUploadItem[]>([]);
-  const [isUploading, setIsUploading] = useState(false);
-  const [uploadsPaused, setUploadsPaused] = useState(false);
-
-  const finalConfig = { ...defaultConfig, ...config };
-
-  const addFiles = useCallback(
-    async (newFiles: File[]) => {
-      const fileItems: FileUploadItem[] = [];
-
-      for (const file of newFiles) {
-        const error = validateFile(file, finalConfig);
-        const preview = finalConfig.showPreview
-          ? await createFilePreview(file)
-          : undefined;
-
-        const fileItem: FileUploadItem = {
-          id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-          file,
-          preview,
-          progress: 0,
-          status: error ? "error" : "pending",
-          error: error ?? undefined,
-        };
-
-        fileItems.push(fileItem);
-      }
-
-      setFiles((prev) => [...prev, ...fileItems]);
-    },
-    [finalConfig]
-  );
-
-  const removeFile = useCallback((id: string) => {
-    setFiles((prev) => prev.filter((f) => f.id !== id));
-  }, []);
-
-  const clearAllFiles = useCallback(() => {
-    setFiles([]);
-  }, []);
-
-  const updateFileProgress = useCallback((id: string, progress: number) => {
-    setFiles((prev) => prev.map((f) => (f.id === id ? { ...f, progress } : f)));
-  }, []);
-
-  const updateFileStatus = useCallback(
-    (id: string, status: "success" | "error") => {
-      setFiles((prev) =>
-        prev.map((f) =>
-          f.id === id
-            ? {
-                ...f,
-                status,
-                progress: status === "success" ? 100 : f.progress,
-                error: status === "error" ? "Upload failed" : undefined,
-              }
-            : f
-        )
-      );
-    },
-    []
-  );
-
-  const retryFile = useCallback(
-    (id: string) => {
-      const file = files.find((f) => f.id === id);
-      if (!file) return;
-
-      setFiles((prev) =>
-        prev.map((f) =>
-          f.id === id
-            ? {
-                ...f,
-                status: "uploading" as const,
-                progress: 0,
-                error: undefined,
-              }
-            : f
-        )
-      );
-
-      simulateUpload(file, updateFileProgress, updateFileStatus);
-    },
-    [files, updateFileProgress, updateFileStatus]
-  );
-
-  const startUploads = useCallback(() => {
-    setIsUploading(true);
-    setUploadsPaused(false);
-
-    const pendingFiles = files.filter((f) => f.status === "pending");
-
-    setFiles((prev) =>
-      prev.map((f) =>
-        f.status === "pending" ? { ...f, status: "uploading" as const } : f
-      )
-    );
-
-    pendingFiles.forEach((file) => {
-      simulateUpload(file, updateFileProgress, updateFileStatus);
-    });
-  }, [files, updateFileProgress, updateFileStatus]);
-
-  const pauseUploads = useCallback(() => {
-    setUploadsPaused(true);
-  }, []);
-
-  const resumeUploads = useCallback(() => {
-    setUploadsPaused(false);
-  }, []);
-
-  const getStats = () => {
-    const total = files.length;
-    const completed = files.filter((f) => f.status === "success").length;
-    const failed = files.filter((f) => f.status === "error").length;
-    const uploading = files.filter((f) => f.status === "uploading").length;
-    const totalSize = files.reduce((acc, f) => acc + f.file.size, 0);
-
-    return { total, completed, failed, uploading, totalSize };
-  };
-
-  const stats = getStats();
-  const hasFiles = files.length > 0;
-  const canUpload = files.some((f) => f.status === "pending") && !isUploading;
-
+  const {
+    files,
+    isUploading,
+    uploadsPaused,
+    addFiles,
+    removeFile,
+    clearAllFiles,
+    retryFile,
+    startUploads,
+    pauseUploads,
+    resumeUploads,
+    stats,
+    hasFiles,
+    canUpload,
+    finalConfig,
+  } = useUpload({ ...defaultConfig, ...config });
+  console.log("FileUpload config:", stats, isUploading);
   return (
     <Card className={cn("w-full max-w-4xl mx-auto", className)}>
       <CardHeader>
@@ -218,7 +105,7 @@ export const FileUpload = ({ config = {}, className }: FileUploadProps) => {
         <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
           <Badge variant="outline">Max {finalConfig.maxFiles} files</Badge>
           <Badge variant="outline">
-            Max {formatFileSize(finalConfig.maxSize)} per file
+            Max {formatFileSize(finalConfig.maxSize ?? 0)} per file
           </Badge>
           <Badge variant="outline">
             Types: {finalConfig.allowedTypes.join(", ")}
