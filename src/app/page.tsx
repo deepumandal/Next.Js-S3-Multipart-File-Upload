@@ -40,7 +40,7 @@ const Home = () => {
         {/* File Upload Component */}
         <FileUpload
           config={{
-            maxSize: 50 * 1024 * 1024, // 50MB
+            maxSize: 100 * 1024 * 1024, // 1gb
             maxFiles: 20,
             allowedTypes: [
               "image/",
